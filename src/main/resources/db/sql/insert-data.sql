@@ -1,0 +1,3 @@
+INSERT INTO STUDENT VALUES (1, 'A', 'a@a.com');
+INSERT INTO STUDENT VALUES (2, 'B', 'b@b.com');
+INSERT INTO STUDENT VALUES (3, 'C', 'c@c.com');
