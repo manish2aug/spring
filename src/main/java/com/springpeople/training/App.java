@@ -1,9 +1,12 @@
 package com.springpeople.training;
 
+import java.util.Collection;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.springpeople.training.configuration.ApplicationConfiguration;
+import com.springpeople.training.domain.Student;
 import com.springpeople.training.service.StudentService;
 
 /**
@@ -16,7 +19,13 @@ public class App
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
         StudentService service = context.getBean(StudentService.class);
-        System.out.println(service.getStudentNames());
-        System.out.println(service.getStudentEmails());
+        Collection<String> studentNames = service.getStudentNames();
+        System.out.println("Initial data: " + studentNames); 
+        try {
+			service.performTransaction1();
+		} catch (CustomException e) {
+			service.getStudentNames();
+			e.printStackTrace();
+		}
     }
 }

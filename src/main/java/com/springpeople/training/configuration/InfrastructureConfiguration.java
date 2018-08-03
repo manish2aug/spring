@@ -3,6 +3,7 @@ package com.springpeople.training.configuration;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+import org.hsqldb.util.DatabaseManagerSwing;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
@@ -22,6 +23,6 @@ public class InfrastructureConfiguration {
 	
 	@PostConstruct
 	public void startDBManager() {
-//		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:hsqldb:mem:testdb", "--user", "sa", "--password", "" });
+		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:hsqldb:mem:testdb", "--user", "sa", "--password", "" });
 	}
 }

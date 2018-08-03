@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
 @Import(InfrastructureConfiguration.class)
@@ -17,7 +18,7 @@ public class ApplicationConfiguration {
 
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@Bean
 	public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
 		return new NamedParameterJdbcTemplate(dataSource);
@@ -26,6 +27,11 @@ public class ApplicationConfiguration {
 	@Bean
 	public JdbcTemplate getJdbcTemplate() {
 		return new JdbcTemplate(dataSource);
+	}
+
+	@Bean
+	public DataSourceTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource);
 	}
 
 //	@Bean
